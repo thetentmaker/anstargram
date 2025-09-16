@@ -1,105 +1,55 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
+import Octicons from '@expo/vector-icons/Octicons';
 import React from 'react';
-import { StyleSheet, Text, TextStyle } from 'react-native';
+import { StyleProp, TextStyle } from 'react-native';
 
 interface IconProps {
   name: string;
   size?: number;
   color?: string;
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
 }
 
-export const Icon: React.FC<IconProps> = ({
-  name,
-  size = 24,
-  color = '#000',
-  style,
-}) => {
-  const getIconSymbol = (iconName: string): string => {
-    const icons: { [key: string]: string } = {
-      // Navigation
-      'arrow-left': '←',
-      'arrow-right': '→',
-      'arrow-up': '↑',
-      'arrow-down': '↓',
-      'chevron-left': '‹',
-      'chevron-right': '›',
-      'chevron-up': 'ˆ',
-      'chevron-down': 'ˇ',
-      
-      // Actions
-      'plus': '+',
-      'minus': '−',
-      'close': '×',
-      'check': '✓',
-      'edit': '✎',
-      'delete': '🗑',
-      'save': '💾',
-      'search': '🔍',
-      'filter': '⚙',
-      'sort': '⇅',
-      
-      // UI Elements
-      'menu': '☰',
-      'more': '⋯',
-      'settings': '⚙',
-      'info': 'ℹ',
-      'warning': '⚠',
-      'error': '✕',
-      'success': '✓',
-      'heart': '♥',
-      'star': '★',
-      'bookmark': '🔖',
-      'share': '↗',
-      'download': '⬇',
-      'upload': '⬆',
-      
-      // Media
-      'play': '▶',
-      'pause': '⏸',
-      'stop': '⏹',
-      'volume': '🔊',
-      'mute': '🔇',
-      'camera': '📷',
-      'image': '🖼',
-      'video': '🎥',
-      
-      // Social
-      'like': '👍',
-      'dislike': '👎',
-      'comment': '💬',
-      'user': '👤',
-      'users': '👥',
-      'notification': '🔔',
-      'message': '💌',
-      
-      // System
-      'home': '🏠',
-      'back': '←',
-      'forward': '→',
-      'refresh': '↻',
-      'loading': '⟳',
-      'lock': '🔒',
-      'unlock': '🔓',
-      'eye': '👁',
-      'eye-off': '👁‍🗨',
-    };
+const Icon: React.FC<IconProps> = ({ name, size = 24, color = '#000', style }) => {
+  type AnyIcon = typeof Ionicons;
+  const mapping: Record<string, { Component: AnyIcon; glyph: string }> = {
+    // Social
+    heart: { Component: Ionicons, glyph: 'heart' },
+    like: { Component: Ionicons, glyph: 'thumbs-up' },
+    bookmark: { Component: Ionicons, glyph: 'bookmark' },
+    comment: { Component: Ionicons, glyph: 'chatbubble-ellipses' },
+    share: { Component: Ionicons, glyph: 'share-social' },
+    star: { Component: Ionicons, glyph: 'star' },
 
-    return icons[iconName] || '?';
+    // UI / Navigation
+    menu: { Component: Ionicons, glyph: 'menu' },
+    more: { Component: Ionicons, glyph: 'ellipsis-horizontal' },
+    search: { Component: Ionicons, glyph: 'search' },
+    settings: { Component: Ionicons, glyph: 'settings' },
+    home: { Component: Ionicons, glyph: 'home' },
+    user: { Component: Ionicons, glyph: 'person' },
+    camera: { Component: Ionicons, glyph: 'camera' },
+    image: { Component: Ionicons, glyph: 'image' },
+    notification: { Component: Ionicons, glyph: 'notifications' },
+    back: { Component: Ionicons, glyph: 'chevron-back' },
+    forward: { Component: Ionicons, glyph: 'chevron-forward' },
+    'arrow-left': { Component: Ionicons, glyph: 'chevron-back' },
+    'arrow-right': { Component: Ionicons, glyph: 'chevron-forward' },
+    arrowLeft: { Component: Ionicons, glyph: 'chevron-back' },
+    arrowRight: { Component: Ionicons, glyph: 'chevron-forward' },
+
+    // Actions
+    plus: { Component: Ionicons, glyph: 'add' },
+    minus: { Component: Ionicons, glyph: 'remove' },
+    close: { Component: Ionicons, glyph: 'close' },
+    check: { Component: Ionicons, glyph: 'checkmark' },
   };
 
+  const fallback = { Component: Octicons, glyph: 'question' };
+  const { Component, glyph } = mapping[name] || fallback;
+
   return (
-    <Text
-      style={[
-        styles.icon,
-        {
-          fontSize: size,
-          color,
-        },
-        style,
-      ]}
-    >
-      {getIconSymbol(name)}
-    </Text>
+    <Component name={glyph as any} size={size} color={color} style={style as any} />
   );
 };
 
@@ -180,10 +130,5 @@ export const ImageIcon: React.FC<Omit<IconProps, 'name'>> = (props) => (
   <Icon name="image" {...props} />
 );
 
-const styles = StyleSheet.create({
-  icon: {
-    textAlign: 'center',
-    includeFontPadding: false,
-    textAlignVertical: 'center',
-  },
-});
+
+export default Icon;

@@ -25,7 +25,7 @@ interface LocalImageProps {
   onError?: () => void;
 }
 
-export const LocalImage: React.FC<LocalImageProps> = ({
+const LocalImage: React.FC<LocalImageProps> = ({
   source,
   width,
   height,
@@ -101,6 +101,8 @@ export const LocalImage: React.FC<LocalImageProps> = ({
     </View>
   );
 };
+
+export default LocalImage;
 
 const styles = StyleSheet.create({
   container: {

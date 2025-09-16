@@ -10,7 +10,7 @@ interface DividerProps {
   dashed?: boolean;
 }
 
-export const Divider: React.FC<DividerProps> = ({
+const Divider: React.FC<DividerProps> = ({
   orientation = 'horizontal',
   thickness = 1,
   color = '#e0e0e0',
@@ -67,6 +67,8 @@ export const Divider: React.FC<DividerProps> = ({
     />
   );
 };
+
+export default Divider;
 
 const styles = StyleSheet.create({
   divider: {

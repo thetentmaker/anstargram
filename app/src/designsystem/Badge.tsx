@@ -10,7 +10,7 @@ interface BadgeProps {
   maxWidth?: number;
 }
 
-export const Badge: React.FC<BadgeProps> = ({
+const Badge: React.FC<BadgeProps> = ({
   text,
   size = 'medium',
   variant = 'primary',
@@ -122,6 +122,8 @@ export const Badge: React.FC<BadgeProps> = ({
     </View>
   );
 };
+
+export default Badge;
 
 const styles = StyleSheet.create({
   badge: {

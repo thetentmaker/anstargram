@@ -18,7 +18,7 @@ interface HeaderIconProps {
   color?: string;
 }
 
-export const Header: React.FC<HeaderProps> & {
+const Header: React.FC<HeaderProps> & {
   Title: React.FC<HeaderTitleProps>;
   Icon: React.FC<HeaderIconProps>;
 } = ({ children }) => {
@@ -48,6 +48,8 @@ const HeaderIcon: React.FC<HeaderIconProps> = ({
 
 Header.Title = HeaderTitle;
 Header.Icon = HeaderIcon;
+
+export default Header;
 
 const styles = StyleSheet.create({
   container: {

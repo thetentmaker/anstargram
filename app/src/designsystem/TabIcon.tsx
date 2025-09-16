@@ -19,7 +19,7 @@ interface TabIconProps {
   badgeTextColor?: string;
 }
 
-export const TabIcon: React.FC<TabIconProps> = ({
+const TabIcon: React.FC<TabIconProps> = ({
   name,
   label,
   focused = false,
@@ -126,22 +126,24 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '500',
     marginTop: 2,
-    textAlign: 'center',
+    textAlign: "center",
   },
   badge: {
-    position: 'absolute',
+    position: "absolute",
     top: -6,
     right: -8,
     minWidth: 16,
     height: 16,
     borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingHorizontal: 4,
   },
   badgeText: {
     fontSize: 10,
-    fontWeight: '600',
+    fontWeight: "600",
     textAlign: 'center',
   },
 });
+
+export default TabIcon;

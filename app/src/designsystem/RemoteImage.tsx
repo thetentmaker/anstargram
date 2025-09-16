@@ -31,7 +31,7 @@ interface RemoteImageProps {
   priority?: 'low' | 'normal' | 'high';
 }
 
-export const RemoteImage: React.FC<RemoteImageProps> = ({
+const RemoteImage: React.FC<RemoteImageProps> = ({
   uri,
   width,
   height,
@@ -134,6 +134,8 @@ export const RemoteImage: React.FC<RemoteImageProps> = ({
 
   return <View style={containerStyles as StyleProp<ViewStyle>}>{content}</View>;
 };
+
+export default RemoteImage;
 
 const styles = StyleSheet.create({
   container: {

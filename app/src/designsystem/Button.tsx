@@ -10,7 +10,7 @@ interface ButtonProps {
   onPressOut?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   onPress,
   disabled = false,
@@ -30,6 +30,8 @@ export const Button: React.FC<ButtonProps> = ({
     </Pressable>
   );
 };
+
+export default Button;
 
 const styles = StyleSheet.create({
   button: {

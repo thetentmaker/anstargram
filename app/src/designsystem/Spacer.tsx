@@ -7,7 +7,7 @@ interface SpacerProps {
   style?: ViewStyle;
 }
 
-export const Spacer: React.FC<SpacerProps> = ({
+const Spacer: React.FC<SpacerProps> = ({
   size = 16,
   horizontal = false,
   style,
@@ -68,3 +68,5 @@ export const HorizontalSpacerXL: React.FC<Omit<SpacerProps, 'size' | 'horizontal
 export const HorizontalSpacerXXL: React.FC<Omit<SpacerProps, 'size' | 'horizontal'>> = (props) => (
   <Spacer size={48} horizontal {...props} />
 );
+
+export default Spacer;
