@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import feedListReducer, { TypeFeedListReducer } from "./reducers/feedList";
-import useInfoReducer, { TypeUserInfoReducer } from "./reducers/useInfo";
+import userInfoReducer, { TypeUserInfoReducer } from "./reducers/userInfo";
 
 const rootReducer = combineReducers({
   feedList: feedListReducer,
-  useInfo: useInfoReducer,
+  userInfo: userInfoReducer,
 });
 
 // export const store = configureStore({
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
 //   },
 // });
 
-export const store = configureStore({
+const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
@@ -24,6 +24,8 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export type RootReducer = {
-  useInfo: TypeUserInfoReducer;
+  userInfo: TypeUserInfoReducer;
   feedList: TypeFeedListReducer;
 };
+
+export default store;

@@ -7,13 +7,13 @@ export type TypeUserInfoReducer = {
   myFeedList: FeedInfo[];
 };
 
-const defaultUseInfoState: TypeUserInfoReducer = {
+const defaultUserInfoState: TypeUserInfoReducer = {
   userInfo: null,
   myFeedList: [],
 };
 
-const useInfoReducer = (
-  state: TypeUserInfoReducer = defaultUseInfoState,
+const userInfoReducer = (
+  state: TypeUserInfoReducer = defaultUserInfoState,
   action: TypeUserInfoActions
 ) => {
     switch (action.type) {
@@ -35,4 +35,4 @@ const useInfoReducer = (
     }
 };
 
-export default useInfoReducer;
+export default userInfoReducer;

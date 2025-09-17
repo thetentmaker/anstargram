@@ -6,17 +6,12 @@ import {
 import AddFeedScreen from "../screens/AddFeedScreen";
 import FeedListScreen from "../screens/FeedListScreen";
 import BottomTabNavigation from "./BottomTabNavigation";
+import { FeedInfo } from "../@types/FeedInfo";
 
 type RootStackParamList = {
   BottomTab: undefined;
   FeedList: {
-    list: {
-      id: string;
-      content: string;
-      writer: string;
-      imageUrl: string;
-      likeCount: number;
-    }[];
+    list: FeedInfo[];
   };
   AddFeed: undefined;
 };

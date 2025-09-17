@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { FeedInfo } from "../@types/FeedInfo";
-import { RootReducer } from "../store";
 import { UserInfo } from "../@types/UserInfo";
+import { RootReducer } from "../store";
 
 const useMyInfo = () =>
   useSelector<RootReducer, UserInfo | null>((state) => state.userInfo.userInfo);
@@ -9,4 +9,5 @@ const useMyInfo = () =>
 const useMyFeedList = () =>
   useSelector<RootReducer, FeedInfo[]>((state) => state.userInfo.myFeedList);
 
-export { useMyInfo, useMyFeedList };
+export { useMyFeedList, useMyInfo };
+

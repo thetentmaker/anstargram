@@ -4,6 +4,7 @@ import { FeedInfo } from "../@types/FeedInfo";
 import { UserInfo } from "../@types/UserInfo";
 import { RootReducer } from "../store";
 import sleep from "../utils/sleep";
+import { IMAGE_LIST } from "../data/constants";
 
 const SET_USER_INFO = "SET_USER_INFO" as const;
 
@@ -69,7 +70,7 @@ const getMyFeedList =
             name: "WRITER_NAME_01",
             uid: "UID_01",
           },
-          imageUrl: "IMAGE_URL_01",
+          imageUrl: IMAGE_LIST[0],
           likeHistory: [
             "LIKE_HISTORY_01",
             "LIKE_HISTORY_02",
@@ -86,7 +87,7 @@ const getMyFeedList =
             name: "WRITER_NAME_02",
             uid: "UID_02",
           },
-          imageUrl: "IMAGE_URL_02",
+          imageUrl: IMAGE_LIST[1],
           likeHistory: [
             "LIKE_HISTORY_01",
             "LIKE_HISTORY_02",
@@ -103,7 +104,7 @@ const getMyFeedList =
             name: "WRITER_NAME_03",
             uid: "UID_03",
           },
-          imageUrl: "IMAGE_URL_03",
+          imageUrl: IMAGE_LIST[2],
           likeHistory: [
             "LIKE_HISTORY_01",
             "LIKE_HISTORY_02",
@@ -120,7 +121,7 @@ const getMyFeedList =
             name: "WRITER_NAME_04",
             uid: "UID_04",
           },
-          imageUrl: "IMAGE_URL_04",
+          imageUrl: IMAGE_LIST[3],
           likeHistory: [
             "LIKE_HISTORY_01",
             "LIKE_HISTORY_02",
@@ -139,7 +140,8 @@ export {
     getMyFeedSuccess,
     SET_USER_INFO,
     setUserInfo,
-    signIn
+    signIn,
+    getMyFeedList,
 };
 
 export type TypeUserThunkAction = ThunkAction<
