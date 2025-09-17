@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
-import { Icon } from './Icons';
+import Icon, { IconName } from './Icons';
 
 interface TabIconProps {
-  name: string;
+  name: IconName;
   label?: string;
   focused?: boolean;
   size?: number;

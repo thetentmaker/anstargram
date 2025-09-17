@@ -11,7 +11,7 @@ const useFeedListItem = ({
     onPressFeed,
 }: FeedListItemProps) => {
     const { width } = useWindowDimensions();
-    const iconName = isLiked ? "heart" : "heart-outline";
+    const iconName = "heart";
     const iconColor = isLiked ? "red" : "black";
   return {
     imageWidth: width,

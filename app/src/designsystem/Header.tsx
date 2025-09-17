@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   headerContainer: {
-    borderBottomColor: "#e0e0e0",
+    borderBottomColor: "gray",
     borderBottomWidth: 1,
     flexDirection: "row",
     alignItems: "center",

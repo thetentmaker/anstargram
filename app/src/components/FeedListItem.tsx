@@ -45,6 +45,7 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
           <Spacer size={4} />
           <View style={styles.writerContainer}>
             <Typography variant="body1">{writer}</Typography>
+            <Spacer horizontal size={8} />
             <Typography variant="body1">{comment}</Typography>
           </View>
         </View>
