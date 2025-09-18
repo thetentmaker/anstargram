@@ -3,20 +3,15 @@ import { FlatList, View } from "react-native";
 import FeedListItem from "../components/FeedListItem";
 import Header from "../designsystem/Header";
 import Spacer from "../designsystem/Spacer";
-import {
-  useRootRoute,
-  useRootStackNavigation,
-} from "../navigations/RootStackNavigation";
+import useFeedList from "../hooks/useFeedList";
 
-const FeedListScreen: React.FC = () => {
-  const route = useRootRoute<"FeedList">();
-  const data = route.params.list;
-  const navigation = useRootStackNavigation<"FeedList">();
+const FeedListScreen = () => {
+  const { data, navigateToBack, navigateToFeed } = useFeedList();
   return (
     <View style={{ flex: 1 }}>
       <Header>
         <Header.Title>Feed List</Header.Title>
-        <Header.Icon name="close" onPress={() => navigation.goBack()} />
+        <Header.Icon name="close" onPress={navigateToBack} />
       </Header>
       <FlatList
         data={data}
@@ -28,9 +23,7 @@ const FeedListScreen: React.FC = () => {
             isLinked={false}
             likeCount={item.likeHistory.length}
             isLiked={item.likeHistory.includes(item.writer.uid)}
-            onPressFeed={() => {
-              console.log("onPressFeed");
-            }}
+            onPressFeed={() => navigateToFeed(item)}
           />
         )}
         ItemSeparatorComponent={() => <Spacer size={24} />}

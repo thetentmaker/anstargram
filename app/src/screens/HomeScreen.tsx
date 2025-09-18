@@ -1,25 +1,12 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { FlatList, View } from "react-native";
-import { useDispatch } from "react-redux";
-import { getFeedList, TypeFeedListDispatch } from "../actions/feed";
 import FeedListItem from "../components/FeedListItem";
 import Header from "../designsystem/Header";
 import Spacer from "../designsystem/Spacer";
-import { useRootStackNavigation } from "../navigations/RootStackNavigation";
-import { useTotalFeedList } from "../selectors/feed";
+import useHome from "../hooks/useHome";
 
 const HomeScreen = () => {
-  const feedList = useTotalFeedList();
-  const dispatch = useDispatch<TypeFeedListDispatch>();
-  const navigation = useRootStackNavigation();
-  const onPressHome = useCallback(() => {
-    navigation.navigate("AddFeed");
-  }, [navigation]);
-  useEffect(() => {
-    console.log("useEffect");
-    dispatch(getFeedList());
-  }, [dispatch]);
-
+  const { onPressHome, data } = useHome();
   return (
     <View style={{ flex: 1 }}>
       <Header>
@@ -28,7 +15,7 @@ const HomeScreen = () => {
       </Header>
 
       <FlatList
-        data={feedList}
+        data={data}
         renderItem={({ item }) => (
           <FeedListItem
             image={item.imageUrl}
@@ -37,7 +24,9 @@ const HomeScreen = () => {
             isLinked={false}
             likeCount={item.likeHistory.length}
             isLiked={item.likeHistory.includes(item.writer.uid)}
-            onPressFeed={() => {console.log("onPressFeed")}}
+            onPressFeed={() => {
+              console.log("onPressFeed");
+            }}
           />
         )}
         ItemSeparatorComponent={() => <Spacer size={24} />}
