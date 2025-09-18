@@ -24,7 +24,7 @@ const favoriteFeedRequest = () => {
 };
 const favoriteFeedSuccess = (
   feedId: FeedInfo["id"],
-  myId: string, 
+  myId: string,
   action: "add" | "del"
 ) => {
   return {
@@ -57,7 +57,7 @@ const createFeedFailure = () => {
   };
 };
 
-export const favoriteFeed =
+const favoriteFeed =
   (item: FeedInfo): TypeFeedListThunkAction =>
   async (
     dispatch: ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>,
@@ -83,7 +83,7 @@ export const favoriteFeed =
     }
   };
 
-export const createFeed =
+const createFeed =
   (
     item: Omit<FeedInfo, "id" | "writer" | "createdAt" | "likeHistory">
   ): TypeFeedListThunkAction =>
@@ -128,7 +128,6 @@ const getFeedListFailure = () => {
   };
 };
 
-
 const getFeedList =
   (): TypeFeedListThunkAction =>
   async (
@@ -138,7 +137,7 @@ const getFeedList =
 
     await sleep(500);
 
-    const data = [
+    const testData: FeedInfo[] = [
       {
         id: "ID_01",
         content: "CONTENT_01",
@@ -208,17 +207,16 @@ const getFeedList =
         createdAt: dayjs().valueOf().toString(),
       },
     ];
-    dispatch(getFeedListSuccess(data as FeedInfo[]));
+    dispatch(getFeedListSuccess(testData));
   };
 
-
-export type TypeFeedListThunkAction = ThunkAction<
+type TypeFeedListThunkAction = ThunkAction<
   void,
   RootReducer,
   undefined,
   TypeFeedListThunkActions
 >;
-export type TypeFeedListThunkActions =
+type TypeFeedListThunkActions =
   | ReturnType<typeof getFeedListRequest>
   | ReturnType<typeof getFeedListSuccess>
   | ReturnType<typeof getFeedListFailure>
@@ -229,27 +227,33 @@ export type TypeFeedListThunkActions =
   | ReturnType<typeof favoriteFeedSuccess>
   | ReturnType<typeof favoriteFeedFailure>;
 
-export type TypeFeedListDispatch = ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>;
-
+type TypeFeedListDispatch = ThunkDispatch<
+  RootReducer,
+  undefined,
+  TypeFeedListThunkActions
+>;
 
 export {
-    CREATE_FEED_FAILURE,
-    CREATE_FEED_REQUEST,
-    CREATE_FEED_SUCCESS,
-    createFeedFailure,
-    createFeedRequest,
-    createFeedSuccess,
-    FAVORITE_FEED_FAILURE,
-    FAVORITE_FEED_REQUEST,
-    FAVORITE_FEED_SUCCESS,
-    favoriteFeedFailure,
-    favoriteFeedRequest,
-    favoriteFeedSuccess,
-    GET_FEED_LIST_FAILURE,
-    GET_FEED_LIST_REQUEST,
-    GET_FEED_LIST_SUCCESS,
-    getFeedListFailure,
-    getFeedListRequest,
-    getFeedListSuccess,
-    getFeedList
+  CREATE_FEED_FAILURE,
+  CREATE_FEED_REQUEST,
+  CREATE_FEED_SUCCESS,
+  createFeedFailure,
+  createFeedRequest,
+  createFeedSuccess,
+  FAVORITE_FEED_FAILURE,
+  FAVORITE_FEED_REQUEST,
+  FAVORITE_FEED_SUCCESS,
+  favoriteFeedFailure,
+  favoriteFeedRequest,
+  favoriteFeedSuccess,
+  GET_FEED_LIST_FAILURE,
+  GET_FEED_LIST_REQUEST,
+  GET_FEED_LIST_SUCCESS,
+  getFeedList,
+  getFeedListFailure,
+  getFeedListRequest,
+  getFeedListSuccess,
+  TypeFeedListDispatch,
+  TypeFeedListThunkAction,
+  TypeFeedListThunkActions,
 };

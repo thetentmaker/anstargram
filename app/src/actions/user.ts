@@ -2,9 +2,9 @@ import dayjs from "dayjs";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { FeedInfo } from "../@types/FeedInfo";
 import { UserInfo } from "../@types/UserInfo";
+import { IMAGE_LIST } from "../data/constants";
 import { RootReducer } from "../store";
 import sleep from "../utils/sleep";
-import { IMAGE_LIST } from "../data/constants";
 
 const SET_USER_INFO = "SET_USER_INFO" as const;
 
@@ -53,7 +53,6 @@ const signIn =
     );
   };
 
-  
 const getMyFeedList =
   (): TypeUserThunkAction =>
   async (
@@ -134,26 +133,36 @@ const getMyFeedList =
       ])
     );
   };
-export {
-    GET_MY_FEED_SUCCESS, getMyFeedFailure,
-    getMyFeedRequest,
-    getMyFeedSuccess,
-    SET_USER_INFO,
-    setUserInfo,
-    signIn,
-    getMyFeedList,
-};
 
-export type TypeUserThunkAction = ThunkAction<
+type TypeUserThunkAction = ThunkAction<
   Promise<void>,
   RootReducer,
   undefined,
   TypeUserInfoActions
 >;
-export type TypeUserInfoActions =
+type TypeUserInfoActions =
   | ReturnType<typeof setUserInfo>
   | ReturnType<typeof getMyFeedRequest>
   | ReturnType<typeof getMyFeedSuccess>
   | ReturnType<typeof getMyFeedFailure>;
 
-export type TypeUserDispatch = ThunkDispatch<RootReducer, undefined, TypeUserInfoActions>;
+type TypeUserDispatch = ThunkDispatch<
+  RootReducer,
+  undefined,
+  TypeUserInfoActions
+>;
+
+export {
+  GET_MY_FEED_REQUEST,
+  GET_MY_FEED_SUCCESS,
+  getMyFeedFailure,
+  getMyFeedList,
+  getMyFeedRequest,
+  getMyFeedSuccess,
+  SET_USER_INFO,
+  setUserInfo,
+  signIn,
+  TypeUserDispatch,
+  TypeUserInfoActions,
+  TypeUserThunkAction,
+};
