@@ -66,12 +66,12 @@ const favoriteFeed =
     dispatch(favoriteFeedRequest());
 
     const myId = getState().userInfo.userInfo?.uid || null;
-    if (myId === item.writer.uid) {
-      dispatch(favoriteFeedFailure());
-      return;
-    }
+    // if (myId === item.writer.uid) {
+    //   dispatch(favoriteFeedFailure());
+    //   return;
+    // }
 
-    await sleep(1000);
+    // await sleep(1000);
     const hasMyId =
       item.likeHistory.filter((likeUserId) => likeUserId === myId).length > 0;
     if (hasMyId) {
