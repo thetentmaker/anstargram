@@ -17,29 +17,33 @@ const useFeedListItem = ({
   const iconColor = isLiked ? "red" : "black";
 
   const scaleRef = useRef<Animated.Value>(new Animated.Value(0)).current;
-  const alphaRef = useRef<Animated.Value>(new Animated.Value(0)).current;
+  const opaciRef = useRef<Animated.Value>(new Animated.Value(0)).current;
 
   const onPressDoubleTab = useCallback(() => {
     console.log("onPressDoubleTab");
     onPressFavorite();
 
-    if (isLiked) {
-      return;
-    }
+    // 이미 좋아요가 눌린 상태라면 애니메이션 실행하지 않음
+    if (isLiked) return;
 
+    // 하트 크기와 투명도 초기화
     scaleRef.setValue(0);
-    alphaRef.setValue(1);
+    opaciRef.setValue(1);
 
+    // 하트 크기 커지는 애니메이션
     Animated.timing(scaleRef, {
       toValue: 2,
       duration: 500,
       useNativeDriver: false,
     }).start(() => {
-      setTimeout(() => {
-        alphaRef.setValue(0);
-      }, 1000);
+      // 1초 후에 투명도 0으로 서서히 사라지는(fade out) 애니메이션 실행
+      Animated.timing(opaciRef, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
     });
-  }, [isLiked, onPressFavorite, scaleRef, alphaRef]);
+  }, [isLiked, onPressFavorite, scaleRef, opaciRef]);
   return {
     imageWidth: width,
     imageHeight: width,
@@ -53,7 +57,7 @@ const useFeedListItem = ({
     onPressFavorite,
     onPressDoubleTab,
     scaleRef,
-    alphaRef,
+    alphaRef: opaciRef,
   };
 };
 
