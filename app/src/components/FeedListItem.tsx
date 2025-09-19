@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Animated, StyleSheet, View } from "react-native";
 import Button from "../designsystem/Button";
 import { DoubleTap } from "../designsystem/DoubleTabButton";
 import Icon from "../designsystem/Icons";
@@ -29,6 +29,9 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
     writer,
     comment,
     onPressFavorite,
+    onPressDoubleTab,
+    scaleRef,
+    alphaRef,
   } = useFeedListItem(props);
 
   return (
@@ -36,13 +39,27 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
       <View>
         <DoubleTap
           onDoubleTap={() => {
-            onPressFavorite();
+            onPressDoubleTab();
           }}
         >
-          <RemoteImage uri={image} width={imageWidth} height={imageHeight} />
+          <View style={{ width: imageWidth, height: imageHeight }}>
+            <RemoteImage uri={image} width={imageWidth} height={imageHeight} />
+            <View
+              style={styles.heartIconContainer}
+            >
+              {/* Animated.View로 감싸기 */}
+              <Animated.View style={{ transform: [{ scale: scaleRef }], opacity: alphaRef }}>
+                <Icon name="heart" size={64} color="red" />
+              </Animated.View>
+            </View>
+          </View>
         </DoubleTap>
         {/* 좋아요 아이콘 */}
-        <Button onPress={onPressFavorite}>
+        <Button
+          onPress={() => {
+            props.onPressFavorite();
+          }}
+        >
           <View style={styles.likeIconContainer}>
             <Icon name={iconName} size={24} color={iconColor} />
           </View>
@@ -72,6 +89,15 @@ const styles = StyleSheet.create({
   likeIconContainer: {
     paddingHorizontal: 12,
     paddingVertical: 6,
+  },
+  heartIconContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 20,
