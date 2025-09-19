@@ -28,15 +28,16 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
     iconColor,
     writer,
     comment,
-    onPressFavorite,
     onPressDoubleTab,
     scaleRef,
     alphaRef,
+    onPressHeart,
   } = useFeedListItem(props);
 
   return (
     <View>
       <View>
+        {/* 이미지 더블 클릭 시 하트 애니메이션 실행 */}
         <DoubleTap
           onDoubleTap={() => {
             onPressDoubleTab();
@@ -56,9 +57,7 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
         </DoubleTap>
         {/* 좋아요 아이콘 */}
         <Button
-          onPress={() => {
-            props.onPressFavorite();
-          }}
+          onPress={onPressHeart}
         >
           <View style={styles.likeIconContainer}>
             <Icon name={iconName} size={24} color={iconColor} />

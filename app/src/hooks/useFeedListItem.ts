@@ -44,6 +44,11 @@ const useFeedListItem = ({
       }).start();
     });
   }, [isLiked, onPressFavorite, scaleRef, opaciRef]);
+
+  const onPressHeart = useCallback(() => {
+    onPressFavorite();
+  }, [onPressFavorite]);
+
   return {
     imageWidth: width,
     imageHeight: width,
@@ -58,6 +63,7 @@ const useFeedListItem = ({
     onPressDoubleTab,
     scaleRef,
     alphaRef: opaciRef,
+    onPressHeart,
   };
 };
 
