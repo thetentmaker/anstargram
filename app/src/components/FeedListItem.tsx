@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import Button from "../designsystem/Button";
+import { DoubleTap } from "../designsystem/DoubleTabButton";
 import Icon from "../designsystem/Icons";
 import RemoteImage from "../designsystem/RemoteImage";
 import Spacer from "../designsystem/Spacer";
@@ -25,17 +26,21 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
     image,
     iconName,
     iconColor,
-    onPressFeed,
     writer,
     comment,
     onPressFavorite,
   } = useFeedListItem(props);
 
   return (
-    <Button onPress={onPressFeed}>
+    <View>
       <View>
-        <RemoteImage uri={image} width={imageWidth} height={imageHeight} />
-
+        <DoubleTap
+          onDoubleTap={() => {
+            onPressFavorite();
+          }}
+        >
+          <RemoteImage uri={image} width={imageWidth} height={imageHeight} />
+        </DoubleTap>
         {/* 좋아요 아이콘 */}
         <Button onPress={onPressFavorite}>
           <View style={styles.likeIconContainer}>
@@ -54,7 +59,7 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
           </View>
         </View>
       </View>
-    </Button>
+    </View>
   );
 };
 
