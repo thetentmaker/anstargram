@@ -1,4 +1,4 @@
-export type FeedInfo = {
+type FeedInfo = {
     id: string;
     content: string;
     writer: {
@@ -9,3 +9,5 @@ export type FeedInfo = {
     likeHistory: string[];
     createdAt: string;
 };
+
+export type { FeedInfo };
