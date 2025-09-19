@@ -7,19 +7,19 @@ import RemoteImage from "../designsystem/RemoteImage";
 import useMyPage from "../hooks/useMyPage";
 
 const MyPageScreen = () => {
-  const { data, navigateToFeedList, photoSize } = useMyPage();
+  const { totalData, navigateToFeedList, photoSize } = useMyPage();
   return (
     <View style={{ flex: 1 }}>
       <Header>
         <Header.Title>My Page</Header.Title>
-      </Header>
+      </Header> 
 
       <FlatList<FeedInfo>
-        data={data}
+        data={totalData}
         numColumns={3}
         renderItem={({ item }) => {
           return (
-            <Button onPress={() => navigateToFeedList(data)}>
+            <Button onPress={() => navigateToFeedList(totalData)}>
               <RemoteImage
                 uri={item.imageUrl}
                 width={photoSize}

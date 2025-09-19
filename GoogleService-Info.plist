@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCpX5UAZ9__j-JHMFCjG3xIrAGF1Xxnz_8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>179860923552</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.anstargram</string>
+	<key>PROJECT_ID</key>
+	<string>allapps-c22e8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>allapps-c22e8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:179860923552:ios:a2a5f5f60ac2e5ce88d5c5</string>
+	<key>DATABASE_URL</key>
+	<string>https://allapps-c22e8-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

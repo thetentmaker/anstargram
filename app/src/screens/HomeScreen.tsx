@@ -6,7 +6,7 @@ import Spacer from "../designsystem/Spacer";
 import useHome from "../hooks/useHome";
 
 const HomeScreen = () => {
-  const { onPressHome, data } = useHome();
+  const { onPressHome, data, onPressFavorite } = useHome();
   return (
     <View style={{ flex: 1 }}>
       <Header>
@@ -27,6 +27,7 @@ const HomeScreen = () => {
             onPressFeed={() => {
               console.log("onPressFeed");
             }}
+            onPressFavorite={() => onPressFavorite(item)}
           />
         )}
         ItemSeparatorComponent={() => <Spacer size={24} />}

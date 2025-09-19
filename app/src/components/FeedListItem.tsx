@@ -14,6 +14,7 @@ export interface FeedListItemProps {
   comment: string;
   isLiked: boolean;
   onPressFeed: () => void;
+  onPressFavorite: () => void;
 }
 
 const FeedListItem: React.FC<FeedListItemProps> = (props) => {
@@ -27,6 +28,7 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
     onPressFeed,
     writer,
     comment,
+    onPressFavorite,
   } = useFeedListItem(props);
 
   return (
@@ -35,9 +37,11 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
         <RemoteImage uri={image} width={imageWidth} height={imageHeight} />
 
         {/* 좋아요 아이콘 */}
-        <View style={styles.likeIconContainer}>
-          <Icon name={iconName} size={24} color={iconColor} />
-        </View>
+        <Button onPress={onPressFavorite}>
+          <View style={styles.likeIconContainer}>
+            <Icon name={iconName} size={24} color={iconColor} />
+          </View>
+        </Button>
 
         {/* 좋아요 수 */}
         <View style={styles.likeCountContainer}>

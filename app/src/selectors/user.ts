@@ -9,5 +9,6 @@ const useMyInfo = () =>
 const useMyFeedList = () =>
   useSelector<RootReducer, FeedInfo[]>((state) => state.userInfo.myFeedList);
 
+
 export { useMyFeedList, useMyInfo };
 

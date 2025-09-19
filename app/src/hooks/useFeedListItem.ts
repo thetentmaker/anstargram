@@ -9,6 +9,7 @@ const useFeedListItem = ({
     comment,
     isLiked,
     onPressFeed,
+    onPressFavorite,
 }: FeedListItemProps) => {
     const { width } = useWindowDimensions();
     const iconName = "heart";
@@ -23,6 +24,7 @@ const useFeedListItem = ({
     writer,
     comment,
     onPressFeed,
+    onPressFavorite,
   };
 };
 

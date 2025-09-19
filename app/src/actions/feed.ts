@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { FeedInfo } from "../@types/FeedInfo";
-import { IMAGE_LIST } from "../data/constants";
+import { useTotalFeedList } from "../selectors/feed";
 import { RootReducer } from "../store";
 import sleep from "../utils/sleep";
 
@@ -85,7 +85,7 @@ const favoriteFeed =
 
 const createFeed =
   (
-    item: Omit<FeedInfo, "id" | "writer" | "createdAt" | "likeHistory">
+    item: Omit<FeedInfo, "likeHistory">
   ): TypeFeedListThunkAction =>
   async (
     dispatch: ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>,
@@ -94,10 +94,10 @@ const createFeed =
     const userInfo = getState().userInfo.userInfo;
     dispatch(createFeedRequest());
 
-    await sleep(200);
+    await sleep(1000);
 
     const newItem: FeedInfo = {
-      id: "ID_10",
+      id: item.id,
       writer: {
         name: userInfo?.name ?? "Unknown",
         uid: userInfo?.uid ?? "Unknown",
@@ -107,6 +107,7 @@ const createFeed =
       likeHistory: [],
       imageUrl: item.imageUrl,
     };
+
     dispatch(createFeedSuccess(newItem));
   };
 const getFeedListRequest = () => {
@@ -135,79 +136,9 @@ const getFeedList =
   ) => {
     dispatch(getFeedListRequest());
 
-    await sleep(500);
+    await sleep(500); // TODO 네트워킹 구간
 
-    const testData: FeedInfo[] = [
-      {
-        id: "ID_01",
-        content: "CONTENT_01",
-        writer: {
-          name: "WRITER_NAME_01",
-          uid: "WRITER_UID_01",
-        },
-        imageUrl: IMAGE_LIST[0],
-        likeHistory: [
-          "LIKE_HISTORY_01",
-          "LIKE_HISTORY_02",
-          "LIKE_HISTORY_03",
-          "LIKE_HISTORY_04",
-          "LIKE_HISTORY_05",
-        ],
-        createdAt: dayjs().valueOf().toString(),
-      },
-      {
-        id: "ID_02",
-        content: "CONTENT_02",
-        writer: {
-          name: "WRITER_NAME_02",
-          uid: "WRITER_UID_02",
-        },
-        imageUrl: IMAGE_LIST[1],
-        likeHistory: [
-          "LIKE_HISTORY_01",
-          "LIKE_HISTORY_02",
-          "LIKE_HISTORY_03",
-          "LIKE_HISTORY_04",
-          "LIKE_HISTORY_05",
-        ],
-        createdAt: dayjs().valueOf().toString(),
-      },
-      {
-        id: "ID_03",
-        content: "CONTENT_03",
-        writer: {
-          name: "WRITER_NAME_03",
-          uid: "WRITER_UID_03",
-        },
-        imageUrl: IMAGE_LIST[2],
-        likeHistory: [
-          "LIKE_HISTORY_01",
-          "LIKE_HISTORY_02",
-          "LIKE_HISTORY_03",
-          "LIKE_HISTORY_04",
-          "LIKE_HISTORY_05",
-        ],
-        createdAt: dayjs().valueOf().toString(),
-      },
-      {
-        id: "ID_04",
-        content: "CONTENT_04",
-        writer: {
-          name: "WRITER_NAME_04",
-          uid: "WRITER_UID_04",
-        },
-        imageUrl: IMAGE_LIST[3],
-        likeHistory: [
-          "LIKE_HISTORY_01",
-          "LIKE_HISTORY_02",
-          "LIKE_HISTORY_03",
-          "LIKE_HISTORY_04",
-          "LIKE_HISTORY_05",
-        ],
-        createdAt: dayjs().valueOf().toString(),
-      },
-    ];
-    dispatch(getFeedListSuccess(testData));
+    dispatch(getFeedListSuccess(useTotalFeedList())); // 네트워킹으로부터 받은 데이터 설정
   };
 
 type TypeFeedListThunkAction = ThunkAction<
@@ -237,12 +168,14 @@ export {
   CREATE_FEED_FAILURE,
   CREATE_FEED_REQUEST,
   CREATE_FEED_SUCCESS,
+  createFeed,
   createFeedFailure,
   createFeedRequest,
   createFeedSuccess,
   FAVORITE_FEED_FAILURE,
   FAVORITE_FEED_REQUEST,
   FAVORITE_FEED_SUCCESS,
+  favoriteFeed,
   favoriteFeedFailure,
   favoriteFeedRequest,
   favoriteFeedSuccess,
@@ -255,5 +188,6 @@ export {
   getFeedListSuccess,
   TypeFeedListDispatch,
   TypeFeedListThunkAction,
-  TypeFeedListThunkActions,
+  TypeFeedListThunkActions
 };
+

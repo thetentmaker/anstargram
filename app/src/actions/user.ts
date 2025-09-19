@@ -1,8 +1,6 @@
-import dayjs from "dayjs";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { FeedInfo } from "../@types/FeedInfo";
 import { UserInfo } from "../@types/UserInfo";
-import { IMAGE_LIST } from "../data/constants";
 import { RootReducer } from "../store";
 import sleep from "../utils/sleep";
 
@@ -46,9 +44,10 @@ const signIn =
     await sleep(1000);
     dispatch(
       setUserInfo({
-        name: "TEST_NAME",
-        uid: "TEST_UID",
-        profileImageUrl: "TEST_PROFILE_IMAGE_URL",
+        name: "Peter",
+        uid: "Peter-8282",
+        profileImageUrl:
+          "https://avatars.githubusercontent.com/u/215279815?v=4",
       })
     );
   };
@@ -56,82 +55,12 @@ const signIn =
 const getMyFeedList =
   (): TypeUserThunkAction =>
   async (
-    dispatch: ThunkDispatch<RootReducer, undefined, TypeUserInfoActions>
+    dispatch: ThunkDispatch<RootReducer, undefined, TypeUserInfoActions>,
+    getState: () => RootReducer
   ) => {
     dispatch(getMyFeedRequest());
-    await sleep(500);
-    dispatch(
-      getMyFeedSuccess([
-        {
-          id: "ID_01",
-          content: "CONTENT_01",
-          writer: {
-            name: "WRITER_NAME_01",
-            uid: "UID_01",
-          },
-          imageUrl: IMAGE_LIST[0],
-          likeHistory: [
-            "LIKE_HISTORY_01",
-            "LIKE_HISTORY_02",
-            "LIKE_HISTORY_03",
-            "LIKE_HISTORY_04",
-            "LIKE_HISTORY_05",
-          ],
-          createdAt: dayjs().valueOf().toString(),
-        },
-        {
-          id: "ID_02",
-          content: "CONTENT_02",
-          writer: {
-            name: "WRITER_NAME_02",
-            uid: "UID_02",
-          },
-          imageUrl: IMAGE_LIST[1],
-          likeHistory: [
-            "LIKE_HISTORY_01",
-            "LIKE_HISTORY_02",
-            "LIKE_HISTORY_03",
-            "LIKE_HISTORY_04",
-            "LIKE_HISTORY_05",
-          ],
-          createdAt: dayjs().valueOf().toString(),
-        },
-        {
-          id: "ID_03",
-          content: "CONTENT_03",
-          writer: {
-            name: "WRITER_NAME_03",
-            uid: "UID_03",
-          },
-          imageUrl: IMAGE_LIST[2],
-          likeHistory: [
-            "LIKE_HISTORY_01",
-            "LIKE_HISTORY_02",
-            "LIKE_HISTORY_03",
-            "LIKE_HISTORY_04",
-            "LIKE_HISTORY_05",
-          ],
-          createdAt: dayjs().valueOf().toString(),
-        },
-        {
-          id: "ID_04",
-          content: "CONTENT_04",
-          writer: {
-            name: "WRITER_NAME_04",
-            uid: "UID_04",
-          },
-          imageUrl: IMAGE_LIST[3],
-          likeHistory: [
-            "LIKE_HISTORY_01",
-            "LIKE_HISTORY_02",
-            "LIKE_HISTORY_03",
-            "LIKE_HISTORY_04",
-            "LIKE_HISTORY_05",
-          ],
-          createdAt: dayjs().valueOf().toString(),
-        },
-      ])
-    );
+    await sleep(1000); // 네트워킹 구간
+    dispatch(getMyFeedSuccess(getState().userInfo.myFeedList)); // 네트워킹으로부터 받은 데이터 중 myFeedList 설정
   };
 
 type TypeUserThunkAction = ThunkAction<
@@ -164,5 +93,6 @@ export {
   signIn,
   TypeUserDispatch,
   TypeUserInfoActions,
-  TypeUserThunkAction,
+  TypeUserThunkAction
 };
+

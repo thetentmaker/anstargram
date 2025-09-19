@@ -2,12 +2,13 @@ import { useCallback, useEffect, useMemo } from "react";
 import { useWindowDimensions } from "react-native";
 import { useDispatch } from "react-redux";
 import { FeedInfo } from "../@types/FeedInfo";
-import { getMyFeedList, TypeUserDispatch } from "../actions/user";
+import { TypeUserDispatch } from "../actions/user";
 import { useRootStackNavigation } from "../navigations/RootStackNavigation";
-import { useMyFeedList } from "../selectors/user";
+import { useTotalFeedList } from "../selectors/feed";
 
 const useMyPage = () => {
-  const data = useMyFeedList();
+  // const data = useMyFeedList();
+  const totalData = useTotalFeedList();
   const rootNavigation = useRootStackNavigation();
   const { width } = useWindowDimensions();
   const dispatch = useDispatch<TypeUserDispatch>();
@@ -18,11 +19,11 @@ const useMyPage = () => {
   }, [rootNavigation]);
 
   useEffect(() => {
-    dispatch(getMyFeedList());
+    // dispatch(getMyFeedList());
   }, [dispatch]);
 
   return {
-    data,
+    totalData,
     photoSize,
     dispatch,
     navigateToFeedList,

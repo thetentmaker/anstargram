@@ -6,7 +6,7 @@ import Spacer from "../designsystem/Spacer";
 import useFeedList from "../hooks/useFeedList";
 
 const FeedListScreen = () => {
-  const { data, navigateToBack, navigateToFeed } = useFeedList();
+  const { data, navigateToBack, navigateToFeed, onPressFavorite } = useFeedList();
   return (
     <View style={{ flex: 1 }}>
       <Header>
@@ -24,6 +24,7 @@ const FeedListScreen = () => {
             likeCount={item.likeHistory.length}
             isLiked={item.likeHistory.includes(item.writer.uid)}
             onPressFeed={() => navigateToFeed(item)}
+            onPressFavorite={() => onPressFavorite(item)}
           />
         )}
         ItemSeparatorComponent={() => <Spacer size={24} />}

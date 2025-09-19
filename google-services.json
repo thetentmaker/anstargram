@@ -1,0 +1,407 @@
+{
+  "project_info": {
+    "project_number": "179860923552",
+    "firebase_url": "https://allapps-c22e8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "allapps-c22e8",
+    "storage_bucket": "allapps-c22e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:7c9bb576c675f8d288d5c5",
+        "android_client_info": {
+          "package_name": "com.anstargram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:6130fd1e27a9afbc88d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.factchecker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:e47d9707616e06e588d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.jinradio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:e9075cc8afab445888d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.livekeyword"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:9cdb0c7b60b473bd88d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.lullaby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:ade878e3f1958a4d88d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.multiplicationtables"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:1fc17a7602957dff88d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.noparking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:caf0803e8d801c6b88d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.solution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:5764544b790e3fd688d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.subwaymap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:643e4511e0973b2d88d5c5",
+        "android_client_info": {
+          "package_name": "io.github.ovso.winfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179860923552:android:e8b8470b6eefd7f888d5c5",
+        "android_client_info": {
+          "package_name": "pearl.forgetIfUCan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqoKy7W3g15vcAdWjh39D9qIWHQ_sqpJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179860923552-irbi2ntniiv6ap1pfillqrkp205hm9j0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179860923552-ks8l0m4hr00tjd0ne4bkomel09mpi01d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anstargram"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
