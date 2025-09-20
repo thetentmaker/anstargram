@@ -38,27 +38,21 @@ const FeedListItem: React.FC<FeedListItemProps> = (props) => {
     <View>
       <View>
         {/* 이미지 더블 클릭 시 하트 애니메이션 실행 */}
-        <DoubleTap
-          onDoubleTap={() => {
-            onPressDoubleTab();
-          }}
-        >
+        <DoubleTap onDoubleTap={onPressDoubleTab}>
           <View style={{ width: imageWidth, height: imageHeight }}>
             <RemoteImage uri={image} width={imageWidth} height={imageHeight} />
-            <View
-              style={styles.heartIconContainer}
-            >
+            <View style={styles.heartIconContainer}>
               {/* Animated.View로 감싸기 */}
-              <Animated.View style={{ transform: [{ scale: scaleRef }], opacity: alphaRef }}>
+              <Animated.View
+                style={{ transform: [{ scale: scaleRef }], opacity: alphaRef }}
+              >
                 <Icon name="heart" size={64} color="red" />
               </Animated.View>
             </View>
           </View>
         </DoubleTap>
         {/* 좋아요 아이콘 */}
-        <Button
-          onPress={onPressHeart}
-        >
+        <Button onPress={onPressHeart}>
           <View style={styles.likeIconContainer}>
             <Icon name={iconName} size={24} color={iconColor} />
           </View>
