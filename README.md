@@ -2,10 +2,13 @@
 
 안스타그램 클론 앱으로 Expo를 활용한 소셜 미디어 애플리케이션입니다.
 
+## 요구사항
+<img src="./screenshot/requirement.png" width="50%">
+
 ## 화면
 |HOME(Feed)|MyPage|ADD FEED|FEED LIST|
 |-|-|-|-|
-|<img src="./screenshot/home_empty_1.png" width="100%" />|<img src="./screenshot/my_page_empty_1.png" width="100%" />|<img src="./screenshot/add_feed_input_1.png" width="100%" />|<img src="./screenshot/feed_list_no_empty_1.png" width="100%" />|
+|<img src="./screenshot/home_empty_1.png" width="100%" />|<img src="./screenshot/my_page_empty_1.png" width="100%" />|<img src="./screenshot/add_feed_empty_1.png" width="100%" />|<img src="./screenshot/feed_list_no_empty_1.png" width="100%" />|
 
 ## 주요 기술 스택
 
@@ -39,19 +42,28 @@
 - 피드 목록 조회
 - 좋아요, 좋아요 취소 기능
 
+<img src="./screenshot/home_feed_fav_check_2.png" width="50%" />
+
 ### 피드 작성
 - 이미지 선택 ~~및 업로드~~
 - 텍스트 입력
-- 피드 저장
+- 피드 저장(상태)
 
-### 피드 목록
-- 개인 피드
-- 좋아요/좋아요 취소 기능
+<img src="./screenshot/add_feed_input_1.png" width="50%" />
 
 ### 마이페이지
 - 사용자 정보 표시
 - 내가 작성한 피드 그리드 뷰(3열)
 - 피드 목록으로 이동
+
+<img src="./screenshot/my_page_1.png" width="50%" />
+
+### 피드 목록
+- 개인 피드
+- 좋아요/좋아요 취소 기능
+
+<img src="./screenshot/feed_list_no_empty_1.png" width="50%" />
+
 
 ## 프로젝트 구조
 
@@ -123,4 +135,7 @@ app/
   - SwiftUI의 Spacer, Android Compose의 Spacer와 유사한 개념으로, 
   - 스타일 속성에서 간격을 찾아야 하는 번거로움 대신 한 눈에 간격을 파악할 수 있는 장점이 있음 
   - 렌더링 성능에 큰 영향을 주지 않는 범위에서 개발 편의성을 고려한 선택
+
+
+  
 
