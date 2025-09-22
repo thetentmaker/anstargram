@@ -71,7 +71,7 @@ const favoriteFeed =
     //   return;
     // }
 
-    // await sleep(1000);
+    await sleep(500);
     const hasMyId =
       item.likeHistory.filter((likeUserId) => likeUserId === myId).length > 0;
     if (hasMyId) {
@@ -85,7 +85,7 @@ const favoriteFeed =
 
 const createFeed =
   (
-    item: Omit<FeedInfo, "likeHistory">
+    item: Omit<FeedInfo, "likeHistory" | "createdAt">
   ): TypeFeedListThunkAction =>
   async (
     dispatch: ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>,

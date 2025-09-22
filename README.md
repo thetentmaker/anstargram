@@ -136,6 +136,95 @@ app/
   - 스타일 속성에서 간격을 찾아야 하는 번거로움 대신 한 눈에 간격을 파악할 수 있는 장점이 있음 
   - 렌더링 성능에 큰 영향을 주지 않는 범위에서 개발 편의성을 고려한 선택
 
+## 새로 배운 개념
 
-  
+### Redux Thunk
+- **역할**: 액션 크리에이터에서 비동기 로직(네트워크 요청, 지연 등)을 다룰 수 있게 해주는 미들웨어. 동기 액션만 보낼 수 있는 Redux에 함수 형태의 액션을 허용해, 내부에서 `dispatch`, `getState`에 접근 가능.
+- **패턴**: 요청 시작 → 성공/실패로 액션을 분기해 로딩/데이터/에러 상태를 일관되게 관리.
+
+```ts
+// 예시: 피드 목록 가져오기 Thunk
+const getFeedList =
+  (): TypeFeedListThunkAction =>
+  async (
+    dispatch: ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>
+  ) => {
+    dispatch(getFeedListRequest());
+
+    await sleep(500); // TODO 네트워킹 구간
+
+    dispatch(getFeedListSuccess(useTotalFeedList())); // 네트워킹으로부터 받은 데이터 설정
+  };
+```
+
+### item: Omit<FeedInfo, "likeHistory" | "createdAt">
+- **의미**: TypeScript의 `Omit<T, K>`를 사용해 `FeedInfo` 타입에서 `likeHistory`, `createdAt` 두 속성을 제외한 타입을 생성.
+- **활용**: 생성/수정 시 불필요하거나 서버가 생성하는 필드를 제외해, 입력 모델을 더 안전하게 정의.
+
+```ts
+type FeedCreateInput = Omit<FeedInfo, "likeHistory" | "createdAt">;
+const item: FeedCreateInput = {
+  // FeedInfo에서 필요한 필드만 포함
+};
+```
+
+### 더블탭 로직 구현 (라이브러리 없이 직접)
+- **배경**: 강의는 더블탭을 라이브러리로 처리했으나, 본 프로젝트에서는 직접 구현.
+- **아이디어**: 마지막 탭 시각을 저장하고, 일정 임계값(예: 250ms) 내에 두 번째 탭이면 더블탭으로 판단.
+
+```ts
+const DoubleTap = ({
+  onDoubleTap,
+  delay = 250,
+  children,
+}: DoubleTapProps) => {
+  const lastTapRef = useRef<number>(0);
+
+  return (
+    <Pressable
+      onPress={() => {
+        const now = Date.now();
+        if (now - lastTapRef.current < delay) {
+          onDoubleTap();
+        }
+        lastTapRef.current = now;
+      }}
+    >
+      {children}
+    </Pressable>
+  );
+}
+```
+
+### feedId: FeedInfo["id"]
+- **의미**: TypeScript **인덱싱 접근 타입(Index Access Type)**. `FeedInfo` 타입의 `id` 속성과 동일한 타입을 참조
+- **장점**: 모델이 바뀌면 참조 타입도 자동으로 따라가 타입 불일치/하드코딩을 방지.
+
+### == vs === (JavaScript/TypeScript 비교 연산자)
+- **== (느슨한 비교)**: 타입 변환 후 비교. 예상치 못한 결과가 나올 수 있음
+- **=== (엄격한 비교)**: 타입과 값 모두 정확히 일치해야 true. 안전하고 예측 가능
+
+```js
+// == (느슨한 비교) - 타입 변환 발생
+"5" == 5;        // true (문자열 "5"가 숫자 5로 변환)
+0 == false;      // true (false가 0으로 변환)
+null == undefined; // true (둘 다 falsy)
+
+// === (엄격한 비교) - 타입과 값 모두 일치해야 함
+"5" === 5;       // false (문자열 vs 숫자)
+0 === false;     // false (숫자 vs 불린)
+null === undefined; // false (null vs undefined)
+
+// 실제 사용 예시
+const userId = "123";
+if (userId === 123) {  // false - 타입이 다름
+  // 실행되지 않음
+}
+
+if (userId == 123) {   // true - 타입 변환으로 비교
+  // 실행됨 (예상치 못한 동작 가능)
+}
+```
+
+**권장사항**: 항상 `===` 사용. 타입 안전성과 예측 가능한 동작을 위해.
 
