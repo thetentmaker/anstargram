@@ -5,7 +5,7 @@
 ## 화면
 |HOME(Feed)|MyPage|ADD FEED|FEED LIST|
 |-|-|-|-|
-|<img src="./screenshot/home_empty_1.png" width="100%" />|<img src="./screenshot/my_page_empty_1.png" width="100%" />|<img src="./screenshot/add_feed_input_1.png" width="100%" />|<img src="./screenshot/feed_list_no_empty_1.png" width="100%" />|
+|<img src="./screenshot/home_empty_1.png" width="250" />|<img src="./screenshot/my_page_empty_1.png" width="250" />|<img src="./screenshot/add_feed_input_1.png" width="250" />|<img src="./screenshot/feed_list_no_empty_1.png" width="250" />|
 
 ## 주요 기술 스택
 
