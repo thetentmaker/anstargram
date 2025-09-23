@@ -19,11 +19,10 @@
 - **React Navigation** - 네비게이션 라이브러리
 
 ### 상태 관리
-- **Redux** - 전역 상태 관리
+- **React Redux** - 전역상태관리
 - **Redux Toolkit** - Redux 개발 도구
 - **Redux Thunk** - 비동기 액션 처리
 - **Redux Logger** - 상태 변화 로깅
-- **React Redux** - React와 Redux 연결
 
 ### UI/UX
 - **Expo Image** - 이미지 처리
@@ -45,7 +44,7 @@
 
 <img src="./screenshot/home_feed_fav_check_2.png" width="20%" />
 
-- 좋아요(Redux, Redux-Thunk)
+- 로직(좋아요 - Redux, Redux-Thunk)
 
 ```ts
 const favoriteFeed =
@@ -102,7 +101,7 @@ const createFeed =
     const userInfo = getState().userInfo.userInfo;
     dispatch(createFeedRequest());
 
-    await sleep(1000);
+    await sleep(1000); // 업로드, firebase
 
     const newItem: FeedInfo = {
       id: item.id,
@@ -392,4 +391,3 @@ if (formData.age == 18) {  // 자동 타입 변환으로 편리
 - **예측 가능성**: 모바일 앱에서는 버그 방지가 중요  
 - **성능**: 불필요한 타입 변환 오버헤드 방지
 - **명시성**: 코드 의도가 명확해야 유지보수성 ↑
-
