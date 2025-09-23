@@ -4,12 +4,12 @@
 
 ## 요구사항
 
-<img src="./screenshot/requirement.png" width="30%">
+<img src="./screenshot/requirement.png" width="70%">
 
 ## 화면
 |HOME(Feed)|MyPage|ADD FEED|FEED LIST|
 |-|-|-|-|
-|<img src="./screenshot/home_empty_1.png" width="100%" />|<img src="./screenshot/my_page_empty_1.png" width="100%" />|<img src="./screenshot/add_feed_empty_1.png" width="100%" />|<img src="./screenshot/feed_list_no_empty_1.png" width="100%" />|
+|<img src="./screenshot/home_empty_1.png" width="200" />|<img src="./screenshot/my_page_empty_1.png" width="200" />|<img src="./screenshot/add_feed_empty_1.png" width="200" />|<img src="./screenshot/feed_list_no_empty_1.png" width="200" />|
 
 ## 주요 기술 스택
 
