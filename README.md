@@ -25,11 +25,10 @@
 - **Redux Logger** - 상태 변화 로깅
 
 ### UI/UX
-- **Expo Image** - 이미지 처리
 - **Expo Image Picker** - 이미지 선택
 - **React Native Safe Area Context** - 안전 영역 처리
 
-### 백엔드(serverless) - 시도 했으나 버전 호환성 문제로 미사용( or NR 호환 문제)
+### 백엔드(serverless) - 시도 했으나 버전 호환성 문제로 미사용( or NA 호환 문제)
 - Firebase 연동 시도
   - app, auth, db
 - Google Sign-In 시도
@@ -42,7 +41,7 @@
 - 피드 목록 조회
 - 좋아요, 좋아요 취소 기능
 
-<img src="./screenshot/home_feed_fav_check_2.png" width="40%" />
+<img src="./screenshot/home_feed_fav_check_2.png" width="35%" />
 
 - 로직(좋아요 - Redux, Redux-Thunk)
 
@@ -85,7 +84,7 @@ const favoriteFeed =
 - 텍스트 입력
 - 피드 저장(상태)
 
-<img src="./screenshot/add_feed_input_1.png" width="40%" />
+<img src="./screenshot/add_feed_input_1.png" width="35%" />
 
 - 로직(Redux, Redux-Thunk)
 
@@ -126,7 +125,7 @@ const createFeed =
 - 내가 작성한 피드 그리드 뷰(3열)
 - 피드 목록으로 이동
 
-<img src="./screenshot/my_page_1.png" width="40%" />
+<img src="./screenshot/my_page_1.png" width="35%" />
 
 - 로직(데이터 로드와 이동)
 
@@ -163,7 +162,7 @@ const createFeed =
 - 개인 피드
 - 좋아요/좋아요 취소 기능
 
-<img src="./screenshot/feed_list_no_empty_1.png" width="40%" />
+<img src="./screenshot/feed_list_no_empty_1.png" width="35%" />
 
 - 로직
 
@@ -391,3 +390,12 @@ if (formData.age == 18) {  // 자동 타입 변환으로 편리
 - **예측 가능성**: 모바일 앱에서는 버그 방지가 중요  
 - **성능**: 불필요한 타입 변환 오버헤드 방지
 - **명시성**: 코드 의도가 명확해야 유지보수성 ↑
+
+### 참고
+MDN: https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness#loose_equality_using
+
+어느 연산을 사용할지 선택하는 것은 여러분이 어떤 종류의 비교를 수행하려고 하는지에 달려있습니다. 간단히 말하자면 다음과 같습니다.
+
+- 이중 등호(==)는 두 대상을 비교할 때 유형 변환을 수행한 뒤, IEEE 754를 준수하도록 NaN, -0, +0을 특별히 처리합니다(따라서 NaN != NaN이고 -0 == +0).
+- 삼중 등호(===)는 이중 등호와 동일한 비교(NaN, -0, +0에 대한 특수 처리 포함)를 수행하지만 유형 변환은 수행하지 않습니다. 유형이 다르면 false가 반환됩니다.
+- Object.is()는 NaN, -0, +0에 대한 형식 변환과 특수 처리를 수행하지 않습니다(특수 숫자 값을 제외하고 ===와 동일한 동작 제공).
