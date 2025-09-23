@@ -335,7 +335,7 @@ const DoubleTap = ({
 - **의미**: TypeScript **인덱싱 접근 타입(Index Access Type)**. `FeedInfo` 타입의 `id` 속성과 동일한 타입을 참조
 - **장점**: 모델이 바뀌면 참조 타입도 자동으로 따라가 타입 불일치/하드코딩을 방지.
 
-### == vs === (JavaScript/TypeScript 비교 연산자)
+### == vs === (JavaScript/TypeScript 비교 연산자) 추가학습
 - **== (느슨한 비교)**: 타입 변환 후 비교. 예상치 못한 결과가 나올 수 있음
 - **=== (엄격한 비교)**: 타입과 값 모두 정확히 일치해야 true. 안전하고 예측 가능
 
@@ -399,3 +399,37 @@ MDN: https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Equality_compari
 - 이중 등호(==)는 두 대상을 비교할 때 유형 변환을 수행한 뒤, IEEE 754를 준수하도록 NaN, -0, +0을 특별히 처리합니다(따라서 NaN != NaN이고 -0 == +0).
 - 삼중 등호(===)는 이중 등호와 동일한 비교(NaN, -0, +0에 대한 특수 처리 포함)를 수행하지만 유형 변환은 수행하지 않습니다. 유형이 다르면 false가 반환됩니다.
 - Object.is()는 NaN, -0, +0에 대한 형식 변환과 특수 처리를 수행하지 않습니다(특수 숫자 값을 제외하고 ===와 동일한 동작 제공).
+
+### 기타 영상으로 대체한 강의
+- 단위테스트를 위한 Jest
+- Expo로 스토어 업로드 및 운영
+  - 릴리즈 하기 전, 환경분리 하기
+  - EAS를 통하여 앱 배포 및 스토어 등록
+  - EAS를 통합 업데이트
+    - 스토어를 거치지 않는 업데이트(js, ts)
+    - OTA Update(Over the air Update)
+- expo이 한계점
+  - Expo SDK 미지원시 불편함
+  - EAS Build System의 빌드 시간(유료 플랜이 아니라면 15~20분)
+  - 빌드 결과물의 Size
+    - 빌드 결과물의 용량이 큰편(20MB 이상)
+- react-native-reanimated
+  - react-native-animated 의 단점을 개선
+    - 쓰레드간 프레임 단위로 통신 -> worklet 이라는 형태로 전달하여 main thread 에서 진행
+ - sharedValues( useSharedValue API)
+   - js thread, main thread 모두에서 접근할 수 있고 바뀌었을때 main thread에서 제일 먼지 감지함
+ - 간단한 animation 구현해보기
+   - FlatList를 스크롤 할 때 플로팅 버튼이 상하로 움직이도록 하는 것
+
+## Wrap-up
+- React Navigation
+  - Stack, BottomTab 등
+- Component
+- Redux, ~~Recoil~~, Context API
+  - Redux, ~~Recoil~~: 전역상태 관리
+  - Context API: 단순한 Props-drilling 만 제거(상태 관리 X)
+  - Redux가 가장 많이 사용됨
+- AsyncStogage, fetch API
+- ~~Firebase~~ 강의로 대체
+  - ~~Authentication, Realtime DB, Crashlytics, Analytics 등~~
+
