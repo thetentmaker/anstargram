@@ -165,7 +165,7 @@ const createFeed =
 
 <img src="./screenshot/feed_list_no_empty_1.png" width="20%" />
 
-- 로직()
+- 로직
 
 ```ts
 const useFeedList = () => {
