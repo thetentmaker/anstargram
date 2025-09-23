@@ -42,7 +42,7 @@
 - 피드 목록 조회
 - 좋아요, 좋아요 취소 기능
 
-<img src="./screenshot/home_feed_fav_check_2.png" width="20%" />
+<img src="./screenshot/home_feed_fav_check_2.png" width="40%" />
 
 - 로직(좋아요 - Redux, Redux-Thunk)
 
@@ -85,7 +85,7 @@ const favoriteFeed =
 - 텍스트 입력
 - 피드 저장(상태)
 
-<img src="./screenshot/add_feed_input_1.png" width="20%" />
+<img src="./screenshot/add_feed_input_1.png" width="40%" />
 
 - 로직(Redux, Redux-Thunk)
 
@@ -126,7 +126,7 @@ const createFeed =
 - 내가 작성한 피드 그리드 뷰(3열)
 - 피드 목록으로 이동
 
-<img src="./screenshot/my_page_1.png" width="20%" />
+<img src="./screenshot/my_page_1.png" width="40%" />
 
 - 로직(데이터 로드와 이동)
 
@@ -163,7 +163,7 @@ const createFeed =
 - 개인 피드
 - 좋아요/좋아요 취소 기능
 
-<img src="./screenshot/feed_list_no_empty_1.png" width="20%" />
+<img src="./screenshot/feed_list_no_empty_1.png" width="40%" />
 
 - 로직
 
