@@ -3,7 +3,8 @@
 안스타그램 클론 앱으로 Expo를 활용한 소셜 미디어 애플리케이션입니다.
 
 ## 요구사항
-<img src="./screenshot/requirement.png" width="50%">
+
+<img src="./screenshot/requirement.png" width="30%">
 
 ## 화면
 |HOME(Feed)|MyPage|ADD FEED|FEED LIST|
@@ -16,7 +17,7 @@
 - **Expo** - React Native 개발 플랫폼
 - **React Native New Architecture** - 새로운 아키텍처 활성화
 - **React Navigation** - 네비게이션 라이브러리
- 
+
 ### 상태 관리
 - **Redux** - 전역 상태 관리
 - **Redux Toolkit** - Redux 개발 도구
@@ -42,27 +43,160 @@
 - 피드 목록 조회
 - 좋아요, 좋아요 취소 기능
 
-<img src="./screenshot/home_feed_fav_check_2.png" width="50%" />
+<img src="./screenshot/home_feed_fav_check_2.png" width="20%" />
+
+- 좋아요(Redux, Redux-Thunk)
+
+```ts
+const favoriteFeed =
+  (item: FeedInfo): TypeFeedListThunkAction =>
+  async (
+    dispatch: ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>,
+    getState: () => RootReducer
+  ) => {
+    dispatch(favoriteFeedRequest());
+
+    const myId = getState().userInfo.userInfo?.uid || null;
+    // if (myId === item.writer.uid) {
+    //   dispatch(favoriteFeedFailure());
+    //   return;
+    // }
+
+    await sleep(500);
+    const hasMyId =
+      item.likeHistory.filter((likeUserId) => likeUserId === myId).length > 0;
+    if (hasMyId) {
+      // 좋아요 취소
+      dispatch(favoriteFeedSuccess(item.id, myId || "", "del"));
+    } else {
+      // 좋아요 추가
+      dispatch(favoriteFeedSuccess(item.id, myId || "", "add"));
+    }
+  };
+
+```
+
+
+
+
 
 ### 피드 작성
+
 - 이미지 선택 ~~및 업로드~~
 - 텍스트 입력
 - 피드 저장(상태)
 
-<img src="./screenshot/add_feed_input_1.png" width="50%" />
+<img src="./screenshot/add_feed_input_1.png" width="20%" />
+
+- 로직(Redux, Redux-Thunk)
+
+```ts
+const createFeed =
+  (
+    item: Omit<FeedInfo, "likeHistory" | "createdAt">
+  ): TypeFeedListThunkAction =>
+  async (
+    dispatch: ThunkDispatch<RootReducer, undefined, TypeFeedListThunkActions>,
+    getState: () => RootReducer
+  ) => {
+    const userInfo = getState().userInfo.userInfo;
+    dispatch(createFeedRequest());
+
+    await sleep(1000);
+
+    const newItem: FeedInfo = {
+      id: item.id,
+      writer: {
+        name: userInfo?.name ?? "Unknown",
+        uid: userInfo?.uid ?? "Unknown",
+      },
+      content: item.content,
+      createdAt: dayjs().valueOf().toString(),
+      likeHistory: [],
+      imageUrl: item.imageUrl,
+    };
+
+    dispatch(createFeedSuccess(newItem));
+  };
+```
+
+
 
 ### 마이페이지
 - 사용자 정보 표시
 - 내가 작성한 피드 그리드 뷰(3열)
 - 피드 목록으로 이동
 
-<img src="./screenshot/my_page_1.png" width="50%" />
+<img src="./screenshot/my_page_1.png" width="20%" />
+
+- 로직(데이터 로드와 이동)
+
+  ```ts
+  const useMyPage = () => {
+    // const data = useMyFeedList();
+    const totalData = useTotalFeedList();
+    const rootNavigation = useRootStackNavigation();
+    const { width } = useWindowDimensions();
+    const dispatch = useDispatch<TypeUserDispatch>();
+    const photoSize = useMemo(() => width / 3, [width]);
+  
+    const navigateToFeedList = useCallback((params: FeedInfo[]) => {
+      rootNavigation?.navigate("FeedList", { list: params });
+    }, [rootNavigation]);
+  
+    useEffect(() => {
+      // dispatch(getMyFeedList());
+    }, [dispatch]);
+  
+    return {
+      totalData,
+      photoSize,
+      dispatch,
+      navigateToFeedList,
+    };
+  };
+  
+  ```
+
+  
 
 ### 피드 목록
 - 개인 피드
 - 좋아요/좋아요 취소 기능
 
-<img src="./screenshot/feed_list_no_empty_1.png" width="50%" />
+<img src="./screenshot/feed_list_no_empty_1.png" width="20%" />
+
+- 로직()
+
+```ts
+const useFeedList = () => {
+  const route = useRootRoute<"FeedList">();
+  const data = route.params.list;
+  const navigation = useRootStackNavigation<"FeedList">();
+  const dispatch = useDispatch<TypeFeedListDispatch>();
+  const navigateToBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+
+  const navigateToFeed = useCallback((item: FeedInfo) => {
+    //   navigation.navigate("AddFeed", { item });
+  }, []);
+  const onPressFavorite = useCallback(
+    (item: FeedInfo) => {
+      dispatch(favoriteFeed(item));
+    },
+    [dispatch]
+  );
+  return {
+    data,
+    navigateToBack,
+    navigateToFeed,
+    onPressFavorite,
+  };
+};
+```
+
+
 
 
 ## 프로젝트 구조
@@ -157,7 +291,10 @@ const getFeedList =
   };
 ```
 
+
+
 ### item: Omit<FeedInfo, "likeHistory" | "createdAt">
+
 - **의미**: TypeScript의 `Omit<T, K>`를 사용해 `FeedInfo` 타입에서 `likeHistory`, `createdAt` 두 속성을 제외한 타입을 생성.
 - **활용**: 생성/수정 시 불필요하거나 서버가 생성하는 필드를 제외해, 입력 모델을 더 안전하게 정의.
 
@@ -172,7 +309,7 @@ const item: FeedCreateInput = {
 - **배경**: 강의는 더블탭을 라이브러리로 처리했으나, 본 프로젝트에서는 직접 구현.
 - **아이디어**: 마지막 탭 시각을 저장하고, 일정 임계값(예: 250ms) 내에 두 번째 탭이면 더블탭으로 판단.
 
-```ts
+```tsx
 const DoubleTap = ({
   onDoubleTap,
   delay = 250,
@@ -228,3 +365,30 @@ if (userId == 123) {   // true - 타입 변환으로 비교
 
 **권장사항**: 항상 `===` 사용. 타입 안전성과 예측 가능한 동작을 위해.
 
+### == (느슨한 비교)를 왜 만들었을까?
+- **JavaScript 설계 철학**: 동적 타입 언어의 "유연성 우선" 원칙
+- **웹 환경의 특성**: HTML 폼에서 오는 값들이 모두 문자열이므로 자동 타입 변환이 편리
+- **개발자 편의성**: 타입 변환을 자동으로 처리해 개발자가 신경 쓰지 않게 함
+
+```js
+// 1995년 웹 환경에서의 실제 사용 사례
+const userAge = "25";  // HTML 폼에서 온 값
+const minAge = 18;
+
+// == 덕분에 간단하게 비교 가능
+if (userAge == minAge) {  // "25" == 18 → 25 == 18 → true
+  console.log("성인 인증");
+}
+
+// HTML 폼 데이터 처리
+const formData = { age: "25", score: "95" };
+if (formData.age == 18) {  // 자동 타입 변환으로 편리
+  console.log("성인");
+}
+```
+
+**현대 개발에서 === 선호 이유**:
+- **타입 안전성**: TypeScript 사용으로 타입이 명확
+- **예측 가능성**: 모바일 앱에서는 버그 방지가 중요  
+- **성능**: 불필요한 타입 변환 오버헤드 방지
+- **명시성**: 코드 의도가 명확해야 유지보수성 ↑
