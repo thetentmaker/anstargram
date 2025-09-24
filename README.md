@@ -400,7 +400,7 @@ MDN: https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Equality_compari
 - 삼중 등호(===)는 이중 등호와 동일한 비교(NaN, -0, +0에 대한 특수 처리 포함)를 수행하지만 유형 변환은 수행하지 않습니다. 유형이 다르면 false가 반환됩니다.
 - Object.is()는 NaN, -0, +0에 대한 형식 변환과 특수 처리를 수행하지 않습니다(특수 숫자 값을 제외하고 ===와 동일한 동작 제공).
 
-### 기타 영상으로 대체한 강의
+### 영상으로 대체한 강의
 - 단위테스트를 위한 Jest
 - Expo로 스토어 업로드 및 운영
   - 릴리즈 하기 전, 환경분리 하기
@@ -420,6 +420,17 @@ MDN: https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Equality_compari
    - js thread, main thread 모두에서 접근할 수 있고 바뀌었을때 main thread에서 제일 먼지 감지함
  - 간단한 animation 구현해보기
    - FlatList를 스크롤 할 때 플로팅 버튼이 상하로 움직이도록 하는 것
+- 핸드폰 센서를 이용하여 평형계 만들어 보기
+  - 센서들을 읽어 올 수 있는 라이브러리를 찾아보고 설치
+  - 자이로스코프 센서(설명)
+  - 실제 평형계 처럼 동작하도록 기능 추가(색상 변하게 하기)
+- 맛집 공유 앱 만들기
+  - 기획서 검토
+  - react-native-maps를 추가하여 지도를 띄우기
+  - GeoLocation을 통하여 현재 내 위치 가져오기
+  - reverse geocoding을 통하여 현재 위치의 주소를 가져오기
+  - geocoding을 통하여 주소를 입력하여 해당 위치로 이동하기
+  
 
 ## Wrap-up
 - React Navigation
